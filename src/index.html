@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TestApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="node_modules/@grapecity/wijmo.styles/wijmo.css">
+  <!-- Polyfills -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/fesm2015/zone.min.js"></script>
+  <!-- SystemJS -->
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="systemjs.config.js"></script>
+
+  
+  <script>
+      // workaround to load 'rxjs/operators' from the rxjs bundle
+      System.import('rxjs').then(function (m) {
+          System.set(SystemJS.resolveSync('rxjs/operators'), System.newModule(m.operators));
+          System.import('./src/app.component');
+      });
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

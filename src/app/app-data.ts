@@ -1,28 +1,47 @@
 import { Injectable } from '@angular/core';
 
 export interface DataItem {
-    id: number;
-    country: string;
-    active: boolean;
-    downloads: number;
-    sales: number;
-    expenses: number;
+    STT: string;
+    Location: string;
+    Quantity: number;
+    NPC: number;
+    SPC: number;
+    CPC: number;
+    HN: number;
+    HCM: number;
+    Gen1: number;
+    Gen2: number;
+    Gen3: number;
+    NPT: number;
+    ICT: number;
+    EVN: number;
+    OutEVN: number;
+    Notice: string;
 }
-
 
 @Injectable()
 export class DataService {
     getData(): DataItem[] {
-        var countries = 'US,Germany,UK,Japan'.split(',');
+        var locations = ['Trạm 500kV', 'Trạm 220kV', 'Trạm 110kV', 'Trạm 35kV'];
         var data = [];
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 10; i++) {
             data.push({
-                id: i,
-                country: countries[i % countries.length],
-                active: i % 5 != 0,
-                downloads: Math.round(Math.random() * 200000),
-                sales: Math.random() * 100000,
-                expenses: Math.random() * 50000
+                STT: (i + 1).toString(),
+                Location: locations[i % locations.length],
+                Quantity: Math.round(Math.random() * 100),
+                NPC: Math.round(Math.random() * 10),
+                SPC: Math.round(Math.random() * 10),
+                CPC: Math.round(Math.random() * 10),
+                HN: Math.round(Math.random() * 10),
+                HCM: Math.round(Math.random() * 10),
+                Gen1: Math.round(Math.random() * 10),
+                Gen2: Math.round(Math.random() * 10),
+                Gen3: Math.round(Math.random() * 10),
+                NPT: Math.round(Math.random() * 10),
+                ICT: Math.round(Math.random() * 10),
+                EVN: Math.round(Math.random() * 10),
+                OutEVN: Math.round(Math.random() * 10),
+                Notice: ''
             });
         }
         return data;

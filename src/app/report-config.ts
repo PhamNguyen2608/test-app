@@ -1,3 +1,5 @@
+import { DataService, DataItem } from './app-data';
+const allFields = Object.keys(DataItem.prototype) as (keyof DataItem)[];
 type ReportConfigurationsType = {
     [key: string]: {
         mergedColumns?: {
@@ -5,9 +7,13 @@ type ReportConfigurationsType = {
             end: number;
             label: string;
         };
+        verticalMergedColumns?: string[];
         hasTotal?: boolean;
+        columnRenameMap?: { [key: string]: string };
     }
 };
+
+
 
 export const reportConfigurations: ReportConfigurationsType = {
     'bao-cao-tram-phong-may': {
@@ -16,7 +22,11 @@ export const reportConfigurations: ReportConfigurationsType = {
             end: 12,
             label: 'Số lượng thiết bị'
         },
+        verticalMergedColumns: ['STT'], 
         hasTotal: true,
+        columnRenameMap: {
+            'Location': 'Vị trí',
+        }
     },
     'bao-cao-tu-thiet-bi': {
         mergedColumns: {
@@ -25,5 +35,9 @@ export const reportConfigurations: ReportConfigurationsType = {
             label: 'Chi tiết số lượng trạm'
         },
         hasTotal: true,
+        columnRenameMap: {
+            'Location': 'Vị trí',
+        }
     }
 };
+

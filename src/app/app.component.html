@@ -1,11 +1,8 @@
-<div class="container-fluid">
-  <wj-flex-grid #grid [itemsSource]="data" [allowMerging]="'ColumnHeaders'" [alternatingRowStep]="0"
-      [autoGenerateColumns]="false" (initialized)="onInitialized(grid)">
-      <wj-flex-grid-column *ngFor="let col of headers"
-          [binding]="col.binding"
-          [header]="col.header"
-          [format]="col.format ? col.format : null"
-          [allowMerging]="col.allowMerging ? col.allowMerging : false">
-      </wj-flex-grid-column>
-  </wj-flex-grid>
-</div>
+<wj-flex-grid #grid [itemsSource]="data" [allowMerging]="'ColumnHeaders'" [alternatingRowStep]="0"
+    (initialized)="onInitialized(grid)">
+    <wj-flex-grid-column *ngFor="let col of headers"
+        [binding]="col.binding"
+        [header]="col.header"
+        [allowMerging]="col.allowMerging ? col.allowMerging : false">
+    </wj-flex-grid-column>
+</wj-flex-grid>

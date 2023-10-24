@@ -1,13 +1,15 @@
 import { DataService, DataItem } from './app-data';
-const allFields = Object.keys(DataItem.prototype) as (keyof DataItem)[];
-type ReportConfigurationsType = {
+const dataService = new DataService();
+const sampleData = dataService.getData()[0];
+const allFields = Object.keys(sampleData) as (keyof DataItem)[];
+type ReportType = {
     [key: string]: {
         mergedColumns?: {
             start: number;
             end: number;
             label: string;
         };
-        verticalMergedColumns?: string[];
+        verticalMergedColumns?: (keyof DataItem)[];
         hasTotal?: boolean;
         columnRenameMap?: { [key: string]: string };
     }
@@ -15,7 +17,7 @@ type ReportConfigurationsType = {
 
 
 
-export const reportConfigurations: ReportConfigurationsType = {
+export const reportConfigurations: ReportType = {
     'bao-cao-tram-phong-may': {
         mergedColumns: {
             start: 3,
@@ -25,7 +27,7 @@ export const reportConfigurations: ReportConfigurationsType = {
         verticalMergedColumns: ['STT'], 
         hasTotal: true,
         columnRenameMap: {
-            'Location': 'Vị trí',
+            'Location': 'Vị trí ',
         }
     },
     'bao-cao-tu-thiet-bi': {
@@ -35,8 +37,11 @@ export const reportConfigurations: ReportConfigurationsType = {
             label: 'Chi tiết số lượng trạm'
         },
         hasTotal: true,
+        verticalMergedColumns: ['STT','Location','Quantity', 'Notice'], 
         columnRenameMap: {
-            'Location': 'Vị trí',
+            'Location': 'Vị trí trạm ngoài đường truyền',
+            'Quantity': 'Số lượng vị trí',
+            'Notice' : 'Ghi chú'
         }
     }
 };

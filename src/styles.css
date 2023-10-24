@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.wj-cell.wj-header {
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+body {
+    margin-bottom: 24px;
+    }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface DataItem {
+    
     STT: string;
     Location: string;
     Quantity: number;
@@ -17,14 +18,15 @@ export interface DataItem {
     EVN: number;
     OutEVN: number;
     Notice: string;
+  
 }
 
 @Injectable()
 export class DataService {
     getData(): DataItem[] {
-        var locations = ['Trạm 500kV', 'Trạm 220kV', 'Trạm 110kV', 'Trạm 35kV'];
+        var locations = ['Trạm 500kV', 'Trạm 220kV', 'Trạm 110kV', 'Trạm 35kV','T - Nhiệt điện','SP - Điện mặt trời','W - Điện gió','Trạm lặp','Điều độ','ĐHTQ','TTĐKX','Cơ quan','Khác'];
         var data = [];
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 15; i++) {
             data.push({
                 STT: (i + 1).toString(),
                 Location: locations[i % locations.length],
@@ -41,7 +43,7 @@ export class DataService {
                 ICT: Math.round(Math.random() * 10),
                 EVN: Math.round(Math.random() * 10),
                 OutEVN: Math.round(Math.random() * 10),
-                Notice: ''
+                Notice: 'None'
             });
         }
         return data;

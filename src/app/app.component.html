@@ -6,3 +6,8 @@
         [allowMerging]="col.allowMerging ? col.allowMerging : false">
     </wj-flex-grid-column>
 </wj-flex-grid>
+
+<!-- Button to trigger print function -->
+<button class="btn btn-default" (click)="printDoc(grid)">
+    Print with PrintDocument
+</button>

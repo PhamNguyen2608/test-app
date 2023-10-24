@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject,OnInit } from '@angular/core';
 import { DataService, DataItem } from './app-data';
 import { reportConfigurations } from './report-config';
 import * as wjGrid from '@grapecity/wijmo.grid';
@@ -9,12 +9,16 @@ import  * as wjCore  from '@grapecity/wijmo';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit  {
     data: DataItem[];
     headers: any[] = [];
     reportName = 'bao-cao-tu-thiet-bi';
 
     constructor(@Inject(DataService) private dataService: DataService) {
+        this.data = [];
+
+    }
+    ngOnInit(): void {
         this.data = this.dataService.getData();
         console.log('Loaded Data:', this.data); 
 
@@ -32,7 +36,6 @@ export class AppComponent {
         
         console.log('Generated Headers:', this.headers);
     }
-
     onInitialized(grid: wjGrid.FlexGrid): void {
         const config = reportConfigurations[this.reportName];
         const panel = grid.columnHeaders;
